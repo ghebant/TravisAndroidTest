@@ -1,5 +1,15 @@
-language: ruby
-rvm:
- - 2.2
- - jruby
- - rbx-3
+language: android
+android:
+  components:
+    - build-tools-26.0.2
+    - android-26
+
+    # Additional components
+    - extra-google-google_play_services
+    - extra-google-m2repository
+    - extra-android-m2repository
+    - addon-google_apis-google-26
+
+    # Specify at least one system image,
+    # if you need to run emulator(s) during your tests
+    - sys-img-armeabi-v7a-android-26
