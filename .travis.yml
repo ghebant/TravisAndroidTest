@@ -12,8 +12,6 @@ android:
   components:
     - build-tools-26.0.2
     - android-26
-    - android-25
-    - android-22
 
     # Additional components
     - extra-google-google_play_services
