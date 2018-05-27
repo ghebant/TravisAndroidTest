@@ -32,8 +32,8 @@ before_script:
   - adb shell input keyevent 82 &
 
 
-    #jobs:
-    #  include:
-    #    - stage: quality
-    #      script: ./gradlew checkstyle
-    #      script: ./gradlew lint
+jobs:
+  include:
+    - stage: quality
+       script: ./gradlew pmd
+       script: ./gradlew lint

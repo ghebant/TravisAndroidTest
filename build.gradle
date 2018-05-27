@@ -22,6 +22,11 @@ allprojects {
     }
 }
 
+subprojects {
+    apply from: rootProject.file("gradle/quality.gradle")
+}
+
+
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
