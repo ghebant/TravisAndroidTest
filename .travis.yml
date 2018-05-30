@@ -33,12 +33,10 @@ before_script:
 
 stages:
   - build
-  - test
+  - quality
 
 jobs:
   include:
-    - stage: build
-      script: ./gradlew build
-#    - stage: quality
-#       script: ./gradlew pmd
+    - stage: quality
+      script: ./gradlew pmd
 #       script: ./gradlew lint
