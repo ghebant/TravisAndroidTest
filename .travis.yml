@@ -39,6 +39,6 @@ jobs:
   include:
     - stage: build
       script: ./gradlew build
-    - stage: quality
-       script: ./gradlew pmd
-       script: ./gradlew lint
+#    - stage: quality
+#       script: ./gradlew pmd
+#       script: ./gradlew lint
