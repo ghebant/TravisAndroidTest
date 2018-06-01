@@ -35,16 +35,16 @@ before_script:
 #---STAGES---
 
 stages:
-  - quality
   - test
-#  - build
+  - quality
+  - build
 
 jobs:
   include:
+    - stage: test
+      script: ./gradlew test
     - stage: quality
       script: ./gradlew pmd
     - script: ./gradlew lint
-    - stage: test
-      script: ./gradlew test
-    #- stage: build
-     # script: ./gradlew assembleDebug
+    - stage: build
+      script: ./gradlew assembleDebug
