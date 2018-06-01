@@ -39,12 +39,11 @@ stages:
   - test
 #  - build
 
-
 jobs:
   include:
     - stage: quality
       script: ./gradlew pmd
-      script: ./gradlew lint
+    - script: ./gradlew lint
     - stage: test
       script: ./gradlew test
     #- stage: build
