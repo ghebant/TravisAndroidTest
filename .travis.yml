@@ -35,7 +35,7 @@ before_script:
 #---STAGES---
 
 stages:
-  - build
+#  - build
   - test
   - quality
 
