@@ -36,12 +36,13 @@ before_script:
 
 stages:
   - build
+  - test
   - quality
 
 jobs:
   include:
-    - stage: build
-      script: ./gradlew assembleDebug
     - stage: quality
       script: ./gradlew pmd
-#       script: ./gradlew lint
+      script: ./gradlew lint
+    #- stage: build
+     # script: ./gradlew assembleDebug
