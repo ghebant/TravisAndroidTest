@@ -17,6 +17,6 @@ upload_files() {
   git push origin head:master
 }
 #test
-setup_git
+#setup_git
 commit_website_files
 upload_files
