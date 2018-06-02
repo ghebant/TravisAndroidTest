@@ -48,3 +48,6 @@ jobs:
     - script: ./gradlew lint
     - stage: build
       script: ./gradlew assembleDebug
+
+#after_success:
+#  - ./push.sh
