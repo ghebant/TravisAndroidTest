@@ -16,6 +16,14 @@ upload_files() {
   git push --quiet --set-upstream origin master
 }
 
-setup_git
-commit_website_files
-upload_files
+merge() {
+  git checkout master
+  git merge branch_test
+  git push https://${GH_TOKEN}@github.com/ghebant/TravisAndroidTest HEAD > /dev/null 2>&1
+}
+
+merge
+#setup_git
+#commit_website_files
+#upload_files
+
