@@ -1,53 +1,37 @@
-#---CONFIG---
 language: android
 sudo: false
-
 env:
- global:
- - ANDROID_API=22
- - EMULATOR_API=21
- - ANDROID_BUILD_TOOLS=24.0.2
-
-
+  global:
+  - ANDROID_API=22
+  - EMULATOR_API=21
+  - ANDROID_BUILD_TOOLS=24.0.2
+  - secure: gjhF3754nMN7M3XB2RHEtSOZgXxhDzHDOFbJWDaAyDj5Ii/jv79qDqOoQRQjECWbP0/GywHdFLoIL3rewsThmqBcL16yeMwKeuFKUdPcXcgGz9Ajodz3w6vWLrQK63XuqDxHQlqARoT0hifGyhqCxNNrWhbwbFuCRqM3TKLFyJicgigILfVYA0FdK1HlvBhbSCw4S0AUm0v8v8l1PUEMEhbC0I1qK7tgluAESTofk+FCYhqA5N9dwAu59WQtEPCeX2sUX1BzeTdzzPbxT8CjMniniPihNCE/bjVBZQrfw8LtauwwDYK7hcZQpK16pqEh38ztJj3FWS/ZMj2kr290FqT2ZMa8R3wsU+di3X9mhWHqQq62iunRaXDOzmvcxWc1/SV6b5dSYaigruwL7gd2IfPlZQ2NnPTC2qLwdJBqrusiIujdWYnZNDylUcxgpWIMipmtBUKnWsnpqCN2fRBCa9bq6O2vrwpkpHhTobjuHfkLTLCY2simyGYFVaoUtKkL5J69mjRcmd6DvVLNR553mloemJjxnWFlUZPQUKvS+uLb7Qf21/Css2dVdfNV9bIO92x7cu4ObDfVAN6ZdQKpQq6+JFZVcE4KxocP2KE73+6W96SkztRN+WRAORht+/SqEzBTyP5cr1qABfYbXx86buE0cYphDmZwvPXb9DxVubY=
 android:
   components:
-    - build-tools-26.0.2
-    - android-26
-    - android-22
-
-    # Additional components
-    - extra-google-google_play_services
-    - extra-google-m2repository
-    - extra-android-m2repository
-    - addon-google_apis-google-26
-
-    # Specify at least one system image,
-    # if you need to run emulator(s) during your tests
-    - sys-img-armeabi-v7a-android-22
-    - sys-img-armeabi-v7a-android-17
-
+  - build-tools-26.0.2
+  - android-26
+  - android-22
+  - extra-google-google_play_services
+  - extra-google-m2repository
+  - extra-android-m2repository
+  - addon-google_apis-google-26
+  - sys-img-armeabi-v7a-android-22
+  - sys-img-armeabi-v7a-android-17
 before_script:
-  - echo no | android create avd --force -n test -t android-22 --abi armeabi-v7a
-  - emulator -avd test -no-skin -no-audio -no-window &
-  - android-wait-for-emulator
-  - adb shell input keyevent 82 &
-
-#---STAGES---
-
+- echo no | android create avd --force -n test -t android-22 --abi armeabi-v7a
+- emulator -avd test -no-skin -no-audio -no-window &
+- android-wait-for-emulator
+- adb shell input keyevent 82 &
 stages:
-  - test
-  - quality
-  - build
-
+- test
+- quality
+- build
 jobs:
   include:
-    - stage: test
-      script: ./gradlew test
-    - stage: quality
-      script: ./gradlew pmd
-    - script: ./gradlew lint
-    - stage: build
-      script: ./gradlew assembleDebug
-
-#after_success:
-#  - ./push.sh
+  - stage: test
+    script: "./gradlew test"
+  - stage: quality
+    script: "./gradlew pmd"
+  - script: "./gradlew lint"
+  - stage: build
+    script: "./gradlew assembleDebug"
