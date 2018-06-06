@@ -5,7 +5,7 @@ env:
   - ANDROID_API=22
   - EMULATOR_API=21
   - ANDROID_BUILD_TOOLS=24.0.2
-  - secure: SFFDqZWEa9HkLf4qrMDATjav+7f8MnMdbsULJUY/Ny6ZS5hqRDf3H86btHSTwfnjjsR9aHl/weLB0bk6BUthWG9Yyt4vqgOptfhnkNXHfdUGZAtRbdDibbvERztIr5ZN//9pv4UnSpF8TaVXJM0Mdpdub407jyYQsxJAnrKGpjY9oL3zoIvi9qtvTK/sm8vIEs4q4eRbuJtUWQV/6bsN7iZX6wgDQN/gsJbwIs8b3+2zuLN/9vzW5EbRZUeU6j+dPn9EVaFvE2fNCZPiM6x7ID9YW9bCltq6iaCvw6zR662Cb2/C4mT8jyt9OlczS4GjF61BJM89n67qiTjNWhdwnm0nXzRdH6mLiGIqUsIZg8TqNteanmpE1y7o4rJhZ0cYCFQVZMK4VH2jkq9KpwIyj+zWUL8Unh/CPonzc6fdCMqvFA19+bjcNMlhJlq723khqpaMZriq80XibkUA6zYdwUgtO/KrgTJ65rVEN4Zg6KexGFUGsv/4WG/s3EP6WHQfIjW2seg29ByN4mI9PvpTi7GyDdGIbbNBB9IOkurbOLNEqcZGEl7S/DoCu7RVG8uxnLd26dvPpHuOZFw+ne4w7z8HZUaM6bHYpSI1WQVIuRi7fJYSv/RBijRFtIxzOMFezJxFTUMmxF8g2CDrzR7Tf7Sj/I3PdD6kSLOgejqQKy4=
+
 android:
   components:
   - build-tools-26.0.2
@@ -17,16 +17,18 @@ android:
   - addon-google_apis-google-26
   - sys-img-armeabi-v7a-android-22
   - sys-img-armeabi-v7a-android-17
+
 before_script:
 - echo no | android create avd --force -n test -t android-22 --abi armeabi-v7a
 - emulator -avd test -no-skin -no-audio -no-window &
 - android-wait-for-emulator
 - adb shell input keyevent 82 &
+
 stages:
-- deploy
-- test
 - quality
+- test
 - build
+- deploy
 
 jobs:
   include:
