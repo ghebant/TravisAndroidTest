@@ -27,6 +27,7 @@ stages:
 - test
 - quality
 - build
+
 jobs:
   include:
   - stage: deploy
